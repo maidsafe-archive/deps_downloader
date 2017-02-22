@@ -1,0 +1,52 @@
+{
+  "name": "some-name",
+  "version": "0.1.0",
+  "description": "Download libs for your platform and unpack them automatically on install",
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+  },
+  "download_deps": {
+    "electron": {
+      "mirror": "https://github.com/electron/electron/releases/download/v",
+      "version": "1.6.0",
+      "targetDir": "examples"
+    },
+    "ENV": {
+      "test" : {
+        "electron": {
+          "version": "1.6.1"
+        },
+        "system_uri": {
+          "mirror": "https://github.com/gnunicorn/system_uri/releases/download/v",
+          "version": "0.0.8-testing",
+          "targetDir": "examples"
+        }
+      },
+      "linux": {
+        "ENV": {
+          "test":{
+            "system_uri" : {
+              "version": "0.0.9-testing"
+            }
+          }
+        }
+      },
+      "win32": {
+        "chromedriver": {
+          "mirror": "https://github.com/electron/electron/releases/download/v",
+          "version": "2.21",
+          "targetDir": "examples",
+          "filePattern": "chromedriver.exe"
+        },
+        "ENV": {
+          "test":{
+            "system_uri" : {
+              "version": "0.0.9-testing"
+            }
+          }
+        }
+      }
+    }
+  }
+}

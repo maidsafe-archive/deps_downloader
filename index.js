@@ -41,7 +41,7 @@ module.exports = (options, cb) => {
 		    if (type == 'File' && fileName.match(targetFilePattern)) {
 		    	// only put the specific files into our target dir
 		    	targetFiles.push(fileName)
-		      entry.pipe(fs.createWriteStream(path.join(options.targetDir, fileName)));
+		      entry.pipe(fs.createWriteStream(path.join(options.targetDir || ".", fileName)));
 		    } else {
 		      entry.autodrain();
 		    }

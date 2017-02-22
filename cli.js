@@ -62,8 +62,11 @@ if (opts.package) {
       .map((name) => make_downloader(pkgs, name)), 4)
 
 } else {
+  if (!opts.filename) {
+    console.log("You must specify the --version and --filename")
+  }
   fetcher(opts, (targetFiles, opts) => {
-    console.log('Downloaded and unzip complete: \n - ' + opts.targetDir + '/'
+    console.log('Downloaded and unzip of ' + opts.filename + ' complete: \n - ' + opts.targetDir + '/'
     			  + targetFiles.join(',\n - ' + opts.targetDir + '/'))
     process.exit(0)
   })
