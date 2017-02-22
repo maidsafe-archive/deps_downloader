@@ -21,12 +21,9 @@ module.exports = (options, cb) => {
 	const opts = Object.assign({
 		'arch': os.arch(),
 		'platform': os.platform(),
-		'targetDir': process.cwd(),
-		// defaults
-		'mirror': 'https://github.com/maidsafe/safe_client_libs/releases/download/',
-		'customFilename': 'safelib'
+		'targetDir': process.cwd()
 	}, options);
-	const prefix = opts.customFilename;
+	const prefix = opts.filename;
 	const filename = prefix + "-v" + opts.version + "-" + opts.platform + "-" + opts.arch + '.zip';
 	const targetFilePattern = new RegExp(options.filePattern || '^(' + prefix + '|(lib)' + prefix +'.*\.(dll|so|dylib))$');
 
