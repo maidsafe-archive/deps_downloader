@@ -1,0 +1,21 @@
+{
+  "name": "deps_downloader",
+  "version": "0.1.0",
+  "description": "Download libs for your platform and unpack them automatically on install",
+  "main": "index.js",
+  "scripts": {
+    "example": "node cli.js --package examples/complex.json"
+  },
+  "bin": {
+    "download_deps": "cli.js"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "async": "^2.1.5",
+    "electron-download": "^3.2.0",
+    "extend": "^3.0.0",
+    "minimalist": "^1.0.0",
+    "unzip": "^0.1.11"
+  }
+}
