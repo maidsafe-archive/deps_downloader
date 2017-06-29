@@ -26,6 +26,9 @@ function flatten_configuration(cfg) {
 
     // then apply environment setup
     const node_env = process.env.NODE_ENV || "development";
+    if (env[os.platform()].ENV && env[os.platform()].ENV[node_env]) {
+      conf = extend(true, conf, env[os.platform()].ENV[node_env]);
+    }
     if (env[node_env]) {
       conf = extend(true, conf, env[node_env]);
     }
