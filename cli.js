@@ -15,11 +15,10 @@ const mkdirp = require('mkdirp');
  * makes the targetDir (recursively) and runs a cb
  */
 function createTargetDir( targetDir, cb) {
-  mkdirp.sync( targetDir, function (err) {
+  mkdirp.sync(targetDir, function (err) {
     if (err) return cb(err);
   });
 }
-
 
 let opts = minimist(process.argv.slice(2))
 
@@ -57,10 +56,11 @@ function make_downloader(pkgs, name) {
   if (!opts.filename) {
     opts.filename = name
   }
+
   // make targetDir if it doesnt exist.
-  if (!fs.existsSync(targetDir)){
+  if (!fs.existsSync(targetDir)) {
     createTargetDir(targetDir);
-	}
+  }
 
   return (cb) => fetcher(opts, (targetFiles, opts) => {
     console.log('Downloaded and unzip of ' + opts.filename +
