@@ -8,6 +8,18 @@ const extend = require('extend');
 const fs = require('fs');
 const os = require('os');
 const async = require('async');
+const mkdirp = require('mkdirp');
+
+
+/**
+ * makes the targetDir (recursively) and runs a cb
+ */
+function createTargetDir( targetDir, cb) {
+  mkdirp.sync( targetDir, function (err) {
+    if (err) return cb(err);
+  });
+}
+
 
 let opts = minimist(process.argv.slice(2))
 
@@ -40,13 +52,20 @@ function flatten_configuration(cfg) {
 
 function make_downloader(pkgs, name) {
   const opts = pkgs[name];
+  const targetDir = opts.targetDir;
+
   if (!opts.filename) {
     opts.filename = name
   }
+  // make targetDir if it doesnt exist.
+  if (!fs.existsSync(targetDir)){
+    createTargetDir(targetDir);
+	}
+
   return (cb) => fetcher(opts, (targetFiles, opts) => {
     console.log('Downloaded and unzip of ' + opts.filename +
-                ' complete: \n - ' + opts.targetDir + '/'
-                + targetFiles.join(',\n - ' + opts.targetDir + '/') + "\n\n\n");
+                ' complete: \n - ' + targetDir + '/'
+                + targetFiles.join(',\n - ' + targetDir + '/') + "\n\n\n");
     cb(0, targetFiles)
   })
 }
