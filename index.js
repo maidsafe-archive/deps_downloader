@@ -18,11 +18,26 @@ module.exports = (options, cb) => {
 	if (!options.version) {
 		throw Error("You must specify a version!")
 	}
+
+	const getPlatform = () => {
+        switch (os.platform()) {
+			case 'linux':
+				return 'linux';
+			case 'win32':
+				return 'win';
+			case 'darwin':
+				return 'osx';
+			default:
+				return 'unknown';
+		}
+	};
+
 	const opts = Object.assign({
 		'arch': os.arch(),
-		'platform': os.platform(),
+		'platform': getPlatform(),
 		'targetDir': process.cwd()
 	}, options);
+
 	const prefix = opts.filename;
 	const filename = prefix + "-v" + opts.version + "-" + opts.platform + "-" + opts.arch + '.zip';
 	const targetFilePattern = new RegExp(options.filePattern || '^(' + prefix + '|(lib)' + prefix +'.*\.(dll|so|dylib))$');
