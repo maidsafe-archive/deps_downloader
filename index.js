@@ -32,8 +32,19 @@ module.exports = (options, cb) => {
 		}
 	};
 
+	const getArch = () => {
+        switch (os.arch()) {
+			case 'x64':
+				return 'x64';
+			case 'ia32':
+				return 'x86';
+			default:
+				return 'unknown';
+		}
+	};
+
 	const opts = Object.assign({
-		'arch': os.arch(),
+		'arch': getArch(),
 		'platform': getPlatform(),
 		'targetDir': process.cwd()
 	}, options);
