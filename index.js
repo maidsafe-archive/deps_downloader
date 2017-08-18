@@ -50,7 +50,7 @@ module.exports = (options, cb) => {
 	}, options);
 
 	const prefix = opts.filename;
-	const filename = prefix + "-v" + opts.version + "-" + opts.platform + "-" + opts.arch + '.zip';
+	const filename = prefix + "-" + opts.version + "-" + opts.platform + "-" + opts.arch + '.zip';
 	const targetFilePattern = new RegExp(options.filePattern || '^(' + prefix + '|(lib)' + prefix +'.*\.(dll|so|dylib))$');
 
 	opts.customFilename = filename;
