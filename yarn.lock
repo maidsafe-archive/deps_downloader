@@ -170,9 +170,9 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-"electron-download@git+https://github.com/krishnaIndia/electron-download#dev":
+"electron-download-fork@https://s3.eu-west-2.amazonaws.com/electron-download-fork/electron-download-fork-4.1.0.tgz":
   version "4.1.0"
-  resolved "git+https://github.com/krishnaIndia/electron-download#9af1e2351bb07ff96aabe4742365d5b5d2ebd437"
+  resolved "https://s3.eu-west-2.amazonaws.com/electron-download-fork/electron-download-fork-4.1.0.tgz#905bb52bb17bc9e52fd8dd0206523cfdbe78566b"
   dependencies:
     debug "^2.2.0"
     env-paths "^1.0.0"
