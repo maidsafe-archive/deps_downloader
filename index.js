@@ -1,4 +1,4 @@
-const downloader = require('electron-download');
+const downloader = require('electron-download-fork');
 const unzip = require('unzip');
 const os = require('os');
 const fs = require('fs');
