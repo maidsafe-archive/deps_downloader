@@ -37,14 +37,24 @@ function flatten_configuration(cfg) {
 
     // then apply environment setup
     const node_env = process.env.NODE_ENV || "development";
+    const platform_type = process.env.PLATFORM_TYPE || "desktop";
     if (env[os.platform()] && env[os.platform()].ENV && env[os.platform()].ENV[node_env]) {
       conf = extend(true, conf, env[os.platform()].ENV[node_env]);
     }
     if (env[node_env]) {
       conf = extend(true, conf, env[node_env]);
     }
-
-    delete conf.ENV
+    if (env[platform_type]) {
+      conf = extend(true, conf, env[platform_type]);
+    }
+    delete conf.ENV;
+    Object.keys(conf).forEach((name) => {
+      Object.keys(conf[name]).forEach((prop) => {
+        if (prop === "disable" && conf[name][prop]) {
+          delete conf[name];
+        }
+      });
+    });
   }
   return conf
 }

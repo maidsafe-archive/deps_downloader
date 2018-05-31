@@ -12,6 +12,12 @@
       "version": "1.6.0",
       "targetDir": "examples"
     },
+    "system_uri": {
+      "mirror": "https://s3.eu-west-2.amazonaws.com/system-uri",
+      "version": "v0.4.0",
+      "targetDir": "src/native/prod",
+      "filePattern": "^.*\\.(dll|so|dylib)$"
+    },
     "ENV": {
       "test" : {
         "electron": {
@@ -45,6 +51,11 @@
               "version": "0.0.9-testing"
             }
           }
+        }
+      },
+      "mobile": {
+        "system_uri": {
+          "disable": true
         }
       }
     }
