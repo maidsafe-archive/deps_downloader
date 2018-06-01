@@ -27,30 +27,51 @@ if (opts['strict-ssl'] === false) {
 }
 
 function flatten_configuration(cfg) {
+  const node_env = process.env.NODE_ENV || "development";
   let conf = extend(true, {}, cfg);
   let env = conf.ENV;
+
   if (env) {
+    Object.keys(env).forEach((envValue) => {
+      Object.keys(env[envValue]).forEach((fileName) => {
+        Object.keys(env[envValue][fileName]).forEach((prop) => {
+          if (prop === "override" && !env[envValue][fileName][prop]) {
+            // mix in platform specifics
+            if (env[os.platform()]) {
+              env[envValue][fileName] = extend(true, env[envValue][fileName], env[os.platform()][fileName])
+            }
+
+            // then apply environment setup
+            if (env[os.platform()] && env[os.platform()].ENV && env[os.platform()].ENV[node_env]) {
+              env[envValue][fileName] = extend(true, env[envValue][fileName], env[os.platform()].ENV[node_env][fileName]);
+            }
+            if (env[node_env]) {
+              env[envValue][fileName] = extend(true, env[envValue][fileName], env[node_env][fileName]);
+            }
+            env[envValue][`${fileName}_${envValue}`] = extend(true, {}, conf[fileName], env[envValue][fileName]);
+            delete env[envValue][fileName];
+          }
+        });
+      });
+    });
+
     // mix in platform specifics
     if (env[os.platform()]) {
       conf = extend(true, conf, env[os.platform()])
     }
 
     // then apply environment setup
-    const node_env = process.env.NODE_ENV || "development";
-    const platform_type = process.env.PLATFORM_TYPE || "desktop";
     if (env[os.platform()] && env[os.platform()].ENV && env[os.platform()].ENV[node_env]) {
       conf = extend(true, conf, env[os.platform()].ENV[node_env]);
     }
     if (env[node_env]) {
       conf = extend(true, conf, env[node_env]);
     }
-    if (env[platform_type]) {
-      conf = extend(true, conf, env[platform_type]);
-    }
+
     delete conf.ENV;
     Object.keys(conf).forEach((name) => {
       Object.keys(conf[name]).forEach((prop) => {
-        if (prop === "disable" && conf[name][prop]) {
+        if (prop === "disabled" && conf[name][prop]) {
           delete conf[name];
         }
       });

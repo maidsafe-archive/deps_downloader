@@ -30,27 +30,20 @@ To allow for more complex configurations, you can also add a top-level section `
             "version": "1.6.1"
             "filePattern": "electron$"
         },
-        "system_uri": {
-          "mirror": "https://s3.eu-west-2.amazonaws.com/system-uri",
-          "version": "v0.4.0",
-          "targetDir": "src/native/prod",
-          "filePattern": "^.*\\.(dll|so|dylib)$"
-        },
         "ENV" : {
             "test" : {
-                "version": "1.5.0"
+                "version": "1.5.0",
+                "override": false
             }
             "win32" : {
                 "electron" : {
                     "filePattern": "electron.exe$"
-                },
-                "system_uri": {
-                  "disable": true
+                    "disabled": true
                 }
             },
             "mobile": {
-              "system_uri": {
-                "disable": true
+              "electron": {
+                "disabled": true
               }
             }
         }
@@ -61,4 +54,6 @@ This example does the same as before but now overwrites the filePattern to `elec
 
 `ENV` may contain any `NODE_ENV` environment (default is `development`). Each environment or platform may contain extra entries. Any Platform may also contain a `ENV` entry with other node-env environment overwrites. See [examples/complex.json] for a complex version.
 
-A `disable` property may be added for a particular environment variable condition in order to prevent a default file from being downloaded.
+A `disabled` property may be added for a particular environment variable condition in order to prevent a default file from being downloaded.
+
+If intending to download more than one version of a file, use the `override` property to prevent the the default configuration from being overwritten. 
