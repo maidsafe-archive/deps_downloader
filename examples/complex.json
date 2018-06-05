@@ -15,7 +15,8 @@
     "ENV": {
       "test" : {
         "electron": {
-          "version": "1.6.1"
+          "version": "1.6.1",
+          "override": false
         },
         "system_uri": {
           "mirror": "https://github.com/gnunicorn/system_uri/releases/download/v",
@@ -45,6 +46,11 @@
               "version": "0.0.9-testing"
             }
           }
+        }
+      },
+      "mobile": {
+        "electron": {
+          "disabled": true
         }
       }
     }
