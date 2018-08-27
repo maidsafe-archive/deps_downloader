@@ -57,3 +57,11 @@ This example does the same as before but now overwrites the filePattern to `elec
 A `disabled` property may be added for a particular environment variable condition in order to prevent a default file from being downloaded.
 
 If intending to download more than one version of a file, use the `override` property to prevent the the default configuration from being overwritten. 
+
+## License
+
+This SAFE Network library is licensed under the General Public License (GPL), version 3 ([LICENSE](LICENSE) http://www.gnu.org/licenses/gpl-3.0.en.html).
+
+## Contribution
+
+Copyrights in the SAFE Network are retained by their contributors. No copyright assignment is required to contribute to this project.
