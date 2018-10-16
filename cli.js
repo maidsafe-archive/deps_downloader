@@ -27,7 +27,7 @@ if (opts['strict-ssl'] === false) {
 }
 
 function flatten_configuration(cfg) {
-  const node_env = process.env.NODE_ENV || "development";
+  const node_env = process.env.NODE_ENV || "dev";
   let conf = extend(true, {}, cfg);
   let env = conf.ENV;
 
