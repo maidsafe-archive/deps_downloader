@@ -1,6 +1,6 @@
 {
   "name": "deps_downloader",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Download libs for your platform and unpack them automatically on install",
   "main": "index.js",
   "scripts": {
