@@ -58,7 +58,7 @@ module.exports = (options, cb) => {
 	opts.customFilename = filename;
 	opts.customDir = '/';
 	opts.avoidMiddleUrl = true;
-	opts.cache = path.resolve('./lib_zips' );
+	opts.cache = path.resolve( os.tmpdir(), 'lib_zips' );
 	console.log('opts being passed innnnn', opts)
 
 	return downloader(opts, (err, zipPath) => {
