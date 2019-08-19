@@ -14,7 +14,7 @@
   "dependencies": {
     "async": "^2.1.5",
     "electron-download-fork": "https://s3.eu-west-2.amazonaws.com/electron-download-fork/electron-download-fork-4.1.0.tgz",
-    "extend": "^3.0.0",
+    "extend": "^3.0.2",
     "minimalist": "^1.0.0",
     "unzip": "^0.1.11"
   }
