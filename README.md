@@ -13,7 +13,7 @@ Add to your project via `npm install --save`
 The simplest configuration is if you only have one item to download, which follows the electron conventions. Like electron itself. For that just add to your `package.json`'s `script`-section:
 
 ```
-    "postinstall": "deps_downloader --filename electron --version 1.6.1 --filePattern 
+    "postinstall": "deps_downloader --filename electron --version 1.6.1 --filePattern
     \"electron$\" "
 ```
 
@@ -56,11 +56,11 @@ This example does the same as before but now overwrites the filePattern to `elec
 
 A `disabled` property may be added for a particular environment variable condition in order to prevent a default file from being downloaded.
 
-If intending to download more than one version of a file, use the `override` property to prevent the the default configuration from being overwritten. 
+If intending to download more than one version of a file, use the `override` property to prevent the the default configuration from being overwritten.
 
 ## License
 
-This SAFE Network library is licensed under the General Public License (GPL), version 3 ([LICENSE](LICENSE) http://www.gnu.org/licenses/gpl-3.0.en.html).
+This SAFE Network library is dual-licensed under the Modified BSD ([LICENSE-BSD](LICENSE-BSD) https://opensource.org/licenses/BSD-3-Clause) or the MIT license ([LICENSE-MIT](LICENSE-MIT) https://opensource.org/licenses/MIT) at your option.
 
 ## Contribution
 

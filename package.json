@@ -10,7 +10,7 @@
     "download_deps": "cli.js"
   },
   "author": "",
-  "license": "GPL-3.0",
+  "license": "MIT OR BSD-3-Clause",
   "dependencies": {
     "async": "^2.1.5",
     "electron-download-fork": "https://s3.eu-west-2.amazonaws.com/electron-download-fork/electron-download-fork-4.1.0.tgz",
