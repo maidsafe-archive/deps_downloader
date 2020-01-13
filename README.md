@@ -1,6 +1,7 @@
 # deps_downloader
 Cli to download assets and libraries on demand for your project. Inspired by electron-download but more universal.
 
+**Note this repository is no longer maintained. For the latest on the SAFE Network project please see [safenetwork.tech](https://safenetwork.tech/) or our community forum [safenetforum.org](https://safenetforum.org/)**
 
 ## Installation
 
